@@ -1,9 +1,10 @@
 N, V = map(int, input().split())
 A    = list(map(int, input().split()))
 
+count = 0
+
 for a in A:
   if a == V:
-    print("Yes")
-    break
-else:
-  print("No")
+    count += 1
+
+print(count)
