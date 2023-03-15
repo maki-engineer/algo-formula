@@ -1,11 +1,10 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-count = 0
+max_num = -101
 
-for n in range(N):
-  if n >= 1:
-    if A[n] > A[n - 1]:
-      count += 1
+for a in A:
+  if max_num < a:
+    max_num = a
 
-print(count)
+print(max_num)
