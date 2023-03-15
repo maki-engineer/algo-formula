@@ -1,9 +1,11 @@
-N, V = map(int, input().split())
-A    = list(map(int, input().split()))
+N = int(input())
+A = list(map(int, input().split()))
 
-for a in range(N - 1, -1, -1):
-  if A[a] == V:
-    print(a)
-    break
-else:
-  print(-1)
+count = 0
+
+for n in range(N):
+  if n >= 1:
+    if A[n] > A[n - 1]:
+      count += 1
+
+print(count)
