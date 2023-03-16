@@ -1,10 +1,12 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-max_num = -101
+max_num   = 0
+max_index = -1
 
-for a in A:
-  if max_num < a:
-    max_num = a
+for i in range(N):
+  if A[i] > max_num:
+    max_num   = A[i]
+    max_index = i
 
-print(max_num)
+print(max_index)
