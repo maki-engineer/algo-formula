@@ -1,10 +1,10 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-min_num = 101
+results = [0 for _ in range(9)]
 
 for a in A:
-  if a < min_num:
-    min_num = a
+  results[a - 1] += 1
 
-print(min_num)
+for result in results:
+  print(result)
