@@ -6,5 +6,4 @@ results = [0 for _ in range(9)]
 for a in A:
   results[a - 1] += 1
 
-for result in results:
-  print(result)
+print(results.index(max(results)) + 1)
