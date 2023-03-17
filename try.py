@@ -1,11 +1,3 @@
-N = int(input())
+S, c = input(), input()
 
-for n in range(1, N + 1):
-  if (n % 3 == 0) and (n % 5 == 0):
-    print("FizzBuzz")
-  elif n % 3 == 0:
-    print("Fizz")
-  elif n % 5 == 0:
-    print("Buzz")
-  else:
-    print(n)
+print("Yes" if c in S else "No")
