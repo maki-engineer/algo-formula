@@ -1,9 +1,12 @@
 N = int(input())
 
-count = 0
+if N == 1:
+  print("No")
+  exit()
 
-for n in range(1, N + 1):
+for n in range(2, N):
   if N % n == 0:
-    count += 1
-
-print(count)
+    print("No")
+    break
+else:
+  print("Yes")
