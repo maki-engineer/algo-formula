@@ -1,9 +1,9 @@
 N = int(input())
-A = list(map(int, input().split()))
 
-results = [0 for _ in range(9)]
+count = 0
 
-for a in A:
-  results[a - 1] += 1
+for n in range(1, N + 1):
+  if (n % 2 != 0) and (n % 3 != 0) and (n % 5 != 0):
+    count += 1
 
-print(results.index(max(results)) + 1)
+print(count)
