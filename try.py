@@ -1,11 +1,12 @@
 S = input()
 
-str_index = len(S) - 1
-to         = len(S) // 2
+count  = 0
+string = ""
 
-for i in range(to):
-  if S[i] != S[str_index - i]:
-    print("No")
-    break
-else:
-  print("Yes")
+for s in S:
+  if string == s:
+    count += 1
+  else:
+    string = s
+
+print(count)
