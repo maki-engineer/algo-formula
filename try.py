@@ -1,6 +1,11 @@
-A, B = map(int, input().split())
+N = int(input())
 
-for i in range(A, 0, -1):
-  if (A % i == 0) and (B % i == 0):
-    print(i)
-    exit()
+for n in range(1, N + 1):
+  if (n % 3 == 0) and (n % 5 == 0):
+    print("FizzBuzz")
+  elif n % 3 == 0:
+    print("Fizz")
+  elif n % 5 == 0:
+    print("Buzz")
+  else:
+    print(n)
