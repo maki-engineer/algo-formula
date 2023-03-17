@@ -1,12 +1,6 @@
-N = int(input())
+A, B = map(int, input().split())
 
-if N == 1:
-  print("No")
-  exit()
-
-for n in range(2, N):
-  if N % n == 0:
-    print("No")
-    break
-else:
-  print("Yes")
+for i in range(A, 0, -1):
+  if (A % i == 0) and (B % i == 0):
+    print(i)
+    exit()
