@@ -1,12 +1,10 @@
-S = input()
+N    = int(input())
+S, T = input(), input()
 
-count  = 0
-string = ""
+count = 0
 
-for s in S:
-  if string == s:
+for n in range(N):
+  if S[n] != T[n]:
     count += 1
-  else:
-    string = s
 
 print(count)
