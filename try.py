@@ -1,19 +1,23 @@
-N, K = map(int, input().split())
+L, R = map(int, input().split())
 
 count = 0
 
-# 約数の個数を返す関数
-def count_div_num(num):
-  count_num = 0
+# 回文数か調べる関数
+def check_palindrome(num):
+  is_palindrome = True
+  str_num       = str(num)
+  str_index     = len(str_num) // 2
+  to_index      = len(str_num) - 1
 
-  for n in range(1, num + 1):
-    if num % n == 0:
-      count_num += 1
+  for n in range(str_index):
+    if str_num[n] != str_num[to_index - n]:
+      is_palindrome = False
+      break
 
-  return count_num
+  return is_palindrome
 
-for n in range(1, N + 1):
-  if count_div_num(n) == K:
+for num in range(L, R + 1):
+  if check_palindrome(num):
     count += 1
 
 print(count)
