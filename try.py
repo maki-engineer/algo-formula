@@ -1,23 +1,19 @@
-N = int(input())
-A = list(map(int, input().split()))
+N, K = map(int, input().split())
 
 count = 0
 
-def check_prime_number(num):
-  check_not_prime = False
+# 約数の個数を返す関数
+def count_div_num(num):
+  count_num = 0
 
-  if num == 1:
-    return True
-
-  for n in range(2, num):
+  for n in range(1, num + 1):
     if num % n == 0:
-      check_not_prime = True
-      break
+      count_num += 1
 
-  return check_not_prime
+  return count_num
 
-for a in A:
-  if not check_prime_number(a):
+for n in range(1, N + 1):
+  if count_div_num(n) == K:
     count += 1
 
 print(count)
