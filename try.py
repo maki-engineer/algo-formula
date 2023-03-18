@@ -1,23 +1,12 @@
-L, R = map(int, input().split())
+S = input()
 
-count = 0
+data      = []
+check_str = ''
 
-# 回文数か調べる関数
-def check_palindrome(num):
-  is_palindrome = True
-  str_num       = str(num)
-  str_index     = len(str_num) // 2
-  to_index      = len(str_num) - 1
+for s in S:
+  if check_str != s:
+    if not s in data:
+      check_str = s
+      data.append(check_str)
 
-  for n in range(str_index):
-    if str_num[n] != str_num[to_index - n]:
-      is_palindrome = False
-      break
-
-  return is_palindrome
-
-for num in range(L, R + 1):
-  if check_palindrome(num):
-    count += 1
-
-print(count)
+print(len(data))
