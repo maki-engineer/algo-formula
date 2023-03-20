@@ -1,13 +1,6 @@
-X, Y, Z = map(int, input().split())
+N, K = map(int, input().split())
 A    = list(map(int, input().split()))
-B    = list(map(int, input().split()))
-C    = list(map(int, input().split()))
 
-count = 0
+results = [(A[x], A[y]) for x in range(N) for y in range(x + 1, N) if A[x] + A[y] <= K]
 
-for ai in range(X):
-  for bi in range(Y):
-    for ci in range(Z):
-      if A[ai] + B[bi] == C[ci]: count += 1
-
-print(count)
+print(len(results))
