@@ -1,11 +1,8 @@
+def has_duplicates(list_data):
+  return len(list_data) != len(set(list_data))
+
 N = int(input())
-A = list(map(int, input().split()))
 
-count = 0
+strs = [input() for _ in range(N)]
 
-for a in range(N):
-  for b in range(a + 1, N):
-    for c in range(b + 1, N):
-      if max(A[a], A[b], A[c]) == A[b]: count += 1
-
-print(count)
+print("Yes" if has_duplicates(strs) else "No")
