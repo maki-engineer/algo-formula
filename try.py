@@ -1,6 +1,11 @@
-N, K = map(int, input().split())
-A    = list(map(int, input().split()))
+L, R = map(int, input().split())
 
-results = [(A[x], A[y]) for x in range(N) for y in range(x + 1, N) if A[x] + A[y] <= K]
+count = 0
 
-print(len(results))
+for x in range(L, R + 1):
+  for y in range(x + 1, R + 1):
+    num_str1, num_str2 = str(x), str(y)
+
+    if num_str1[-1] == num_str2[-1]: count += 1
+
+print(count)
