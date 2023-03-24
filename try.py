@@ -1,12 +1,14 @@
-ans = 0
-for i in range(30):
-    H1, M1, H2, M2 = map(int, input().split())
-    if H1 == M1 == H2 == M2 == 0:
-        continue
-    m = 60 * (H2 - H1) + M2 - M1
-    if 360 < m <= 480:
-        m -= 45
-    elif m > 480:
-        m -= 60
-    ans += m
-print(ans // 60, ans % 60)
+N, M      = map(int, input().split())
+menu_list = {}
+result    = 0
+
+for n in range(N):
+  menu = list(input().split())
+  menu_list[menu[0]] = int(menu[1])
+
+orders = list(input().split())
+
+for order in orders:
+  result += menu_list[order]
+
+print(result)
