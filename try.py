@@ -1,17 +1,12 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-# まずは最高値を求める
-max_num = max(A)
+max_num = 0
 
-# 最高値のインデックスを求める
-max_num_index = A.index(max_num)
+for a in A:
+  if max_num == 0:
+    max_num = a
+  if max_num < a:
+    max_num = a
 
-check = 0
-
-for i in range(len(A)):
-  if i == max_num_index: continue
-
-  if check < A[i]: check = A[i]
-
-print(check)
+  print(max_num)
