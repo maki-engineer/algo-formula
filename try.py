@@ -1,12 +1,22 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-max_num = 0
+max_num   = 0
+duplicate = 0
 
-for a in A:
-  if max_num == 0:
-    max_num = a
-  if max_num < a:
-    max_num = a
+for i in range(len(A)):
+  if i == 0:
+    max_num   = A[i]
+    duplicate = 1
+    print(duplicate)
+    continue
 
-  print(max_num)
+  if max_num == A[i]:
+    duplicate += 1
+    print(duplicate)
+  elif max_num < A[i]:
+    max_num = A[i]
+    duplicate = 1
+    print(duplicate)
+  else:
+    print(duplicate)
