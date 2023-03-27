@@ -1,22 +1,22 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-max_num   = 0
-duplicate = 0
+to = N - 1
 
-for i in range(len(A)):
-  if i == 0:
-    max_num   = A[i]
-    duplicate = 1
-    print(duplicate)
-    continue
+while True:
+  count = 0
 
-  if max_num == A[i]:
-    duplicate += 1
-    print(duplicate)
-  elif max_num < A[i]:
-    max_num = A[i]
-    duplicate = 1
-    print(duplicate)
+  # バブルソート
+  for i in range(to):
+    if A[i] > A[i + 1]:
+      count += 1
+      exchange = A[i]
+      A[i]     = A[i + 1]
+      A[i + 1] = exchange
+
+  to -= 1
+
+  if count == 0:
+    break
   else:
-    print(duplicate)
+    print(*A)
