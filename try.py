@@ -1,22 +1,21 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-to = N - 1
+for j in range(N - 1):
+  # 最小値と最小値の場所の変数
+  min_num   = 1001
+  min_index = N + 1
 
-while True:
-  count = 0
+  # 最小値探索
+  for k in range(j, N):
+    if min_num > A[k]:
+      min_num   = A[k]
+      min_index = k
 
-  # バブルソート
-  for i in range(to):
-    if A[i] > A[i + 1]:
-      count += 1
-      exchange = A[i]
-      A[i]     = A[i + 1]
-      A[i + 1] = exchange
+  # 交換
+  exchange     = A[j]
+  A[j]         = A[min_index]
+  A[min_index] = exchange
 
-  to -= 1
-
-  if count == 0:
-    break
-  else:
-    print(*A)
+  #出力
+  print(*A)
