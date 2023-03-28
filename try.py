@@ -1,17 +1,20 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-for i in range(1, N):
-  pos = i
+half_index = N // 2
+L, R       = [], []
 
-  # posが0になるまで昇順の入れ替え作業
-  while pos != 0:
+for i in range(N):
+  # Lに代入
+  if (A[half_index] > A[i]) and (half_index != i):
+    L.append(A[i])
 
-    if A[pos] < A[pos - 1]:
-      exchange   = A[pos]
-      A[pos]     = A[pos - 1]
-      A[pos - 1] = exchange
+  # Rに代入
+  if (A[half_index] <= A[i]) and (half_index != i):
+    R.append(A[i])
 
-    pos -= 1
+# LとRをそれぞれ昇順にソート
+L = sorted(L)
+R = sorted(R)
 
-  print(*A)
+print(*L, A[half_index], *R)
