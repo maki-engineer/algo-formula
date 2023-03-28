@@ -1,25 +1,37 @@
-from random import randint
+from collections import deque
 
 N = int(input())
 A = list(map(int, input().split()))
 
-rand_index = randint(0, N - 1)
-L, R       = [], []
+def merge_sort(ary):
+  if len(ary) == 0:
+    return
 
-for i in range(N):
-  # rand_index == i なら飛ばす
-  if rand_index == i: continue
+  X    = round(len(ary) / 2)
+  L, R = ary[:X], ary[X:]
 
-  # Lに代入
-  if A[rand_index] > A[i]:
-    L.append(A[i])
+  if len(L) >= 2:
+    L = merge_sort(L)
+  if len(R) >= 2:
+    R = merge_sort(R)
 
-  # Rに代入
-  if A[rand_index] <= A[i]:
-    R.append(A[i])
+  dq = deque()
 
-# LとRをそれぞれ昇順にソート
-L = sorted(L)
-R = sorted(R)
+  for l in L:
+    dq.append(l)
+  for r in reversed(R):
+    dq.append(r)
 
-print(*L, A[rand_index], *R)
+  B = []
+
+  while len(dq):
+    if dq[0] <= dq[-1]:
+      B.append(dq.popleft())
+    else:
+      B.append(dq.pop())
+
+  return B
+
+A = merge_sort(A)
+
+print(*A)
