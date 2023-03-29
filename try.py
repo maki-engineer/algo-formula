@@ -1,37 +1,33 @@
-from collections import deque
-
 N = int(input())
 A = list(map(int, input().split()))
 
-def merge_sort(ary):
-  if len(ary) == 0:
-    return
+def quick_sort(ary):
+  # 配列が空の場合は空配列を返す
+  if not ary:
+    return []
 
-  X    = round(len(ary) / 2)
-  L, R = ary[:X], ary[X:]
+  half_index = len(ary) // 2
+  L, R       = [], []
 
-  if len(L) >= 2:
-    L = merge_sort(L)
-  if len(R) >= 2:
-    R = merge_sort(R)
+  # ソート
+  for i, value in enumerate(ary):
+    if i == half_index: continue
 
-  dq = deque()
-
-  for l in L:
-    dq.append(l)
-  for r in reversed(R):
-    dq.append(r)
-
-  B = []
-
-  while len(dq):
-    if dq[0] <= dq[-1]:
-      B.append(dq.popleft())
+    if value < ary[half_index]:
+      L.append(value)
     else:
-      B.append(dq.pop())
+      R.append(value)
 
-  return B
+  # L, Rを再帰的にソートする
+  L = quick_sort(L)
+  R = quick_sort(R)
 
-A = merge_sort(A)
+  # Lをつなげていく
+  L.append(ary[half_index])
+  L.extend(R)
+
+  return L
+
+A = quick_sort(A)
 
 print(*A)
