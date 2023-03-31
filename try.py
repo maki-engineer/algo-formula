@@ -1,3 +1,5 @@
+import random
+
 N = int(input())
 A = list(map(int, input().split()))
 
@@ -6,14 +8,19 @@ def quick_sort(ary):
   if not ary:
     return []
 
-  half_index = len(ary) // 2
+  half_index = random.randrange(len(ary))
   L, R       = [], []
 
   # ソート
   for i, value in enumerate(ary):
     if i == half_index: continue
 
-    if value < ary[half_index]:
+    if value == ary[half_index]:
+      if random.randrange(2):
+        L.append(value)
+      else:
+        R.append(value)
+    elif value < ary[half_index]:
       L.append(value)
     else:
       R.append(value)
