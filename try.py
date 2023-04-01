@@ -1,10 +1,10 @@
 N = int(input())
-A = list(map(int, input().split()))
 
-dp    = [0 for _ in range(N)]
-dp[1] = A[1]
+dp    = [0] * (N + 1)
+dp[0] = 1
+dp[1] = 1
 
-for i in range(2, N):
-  dp[i] = min(A[i] + dp[i - 1], (2 * A[i]) + dp[i - 2])
+for i in range(2, N + 1):
+  dp[i] = dp[i - 2] + dp[i - 1]
 
 print(dp[-1])
