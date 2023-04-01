@@ -1,40 +1,10 @@
-import random
+N, X, Y = map(int, input().split())
 
-N = int(input())
-A = list(map(int, input().split()))
+dp    = [0 for _ in range(N)]
+dp[0] = X
+dp[1] = Y
 
-def quick_sort(ary):
-  # 配列が空の場合は空配列を返す
-  if not ary:
-    return []
+for i in range(2, N):
+  dp[i] = (dp[i - 2] + dp[i - 1]) % 100
 
-  half_index = random.randrange(len(ary))
-  L, R       = [], []
-
-  # ソート
-  for i, value in enumerate(ary):
-    if i == half_index: continue
-
-    if value == ary[half_index]:
-      if random.randrange(2):
-        L.append(value)
-      else:
-        R.append(value)
-    elif value < ary[half_index]:
-      L.append(value)
-    else:
-      R.append(value)
-
-  # L, Rを再帰的にソートする
-  L = quick_sort(L)
-  R = quick_sort(R)
-
-  # Lをつなげていく
-  L.append(ary[half_index])
-  L.extend(R)
-
-  return L
-
-A = quick_sort(A)
-
-print(*A)
+print(dp[-1])
